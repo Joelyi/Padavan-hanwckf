@@ -1,0 +1,134 @@
+#修改TNAME: K2P-5.0 中的K2P-5.0为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
+name: Build K1s from hanwckf repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Build Padavan"
+        required: true
+        default: "build"
+      padavanbin:
+        type: boolean
+        description: '是否替换编译文件'
+        default: 'false'
+      config:
+        type: boolean
+        description: '是否替换配置文件'
+        default: 'true'
+      theme:
+        type: boolean
+        description: '是否替换主题文件'
+        default: 'false'
+      wifi:
+        type: boolean
+        description: '是否替换wifi文件'
+        default: 'false'
+
+#设置仓库的读写权限
+permissions:
+  contents: write
+
+env:
+  REPOSITORY_URL: https://github.com/hanwckf/rt-n56u.git
+  TOOLCHAIN_URL: https://github.com/Yh793/Padavan-build/raw/master/mipsel-linux-uclibc.tar.xz
+  WORK_PATH: /opt/rt-n56u
+  TNAME: PSG1208s
+  TZ: Asia/Shanghai
+  
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - uses: actions/checkout@master
+        env:
+          token: ${{ secrets.R_TOKEN }}
+      - name: Initialization environment
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot \
+          cpio git python3-docutils gettext automake autopoint texinfo build-essential help2man \
+          pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
+          
+      - name: Clone source code
+        run: |
+          git clone --depth=1 $REPOSITORY_URL $WORK_PATH
+          cd /$WORK_PATH/toolchain-mipsel
+          #sh dl_toolchain.sh
+          curl -O -L  $TOOLCHAIN_URL
+          mkdir -p toolchain-3.4.x
+          tar -xvf mipsel-linux-uclibc.tar.xz -C toolchain-3.4.x
+          mkdir -p /opt/images/
+
+      - name: newly build boards
+        run: |
+          cd $WORK_PATH/trunk/configs/boards
+          mkdir $TNAME
+        
+      - name: Recovery Padavan files download from remote
+        if: github.event.inputs.padavanbin == 'true'
+        run: |
+          sudo rm -rf $WORK_PATH/trunk/user/smartdns
+          cp -rf Padavan/smartdns $WORK_PATH/trunk/user
+      - name: Recovery asp files download from remote
+        if: github.event.inputs.padavanbin == 'true'
+        run: |
+          cp -f asp/Advanced_smartdns.asp $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/Advanced_smartdns.asp
+          cp -f Padavan/shared/defaults.c $WORK_PATH/trunk/user/shared/defaults.c
+      - name: Recovery bin files download from remote
+        if: github.event.inputs.config == 'true'
+        run: |
+          cp -f $TNAME/$TNAME.config $WORK_PATH/trunk/configs/templates/$TNAME.config
+          cp -f $TNAME/board.h $WORK_PATH/trunk/configs/boards/$TNAME/board.h
+          cp -f $TNAME/board.mk $WORK_PATH/trunk/configs/boards/$TNAME/board.mk
+          cp -f $TNAME/kernel-3.4.x.config $WORK_PATH/trunk/configs/boards/$TNAME/kernel-3.4.x.config
+          #cd $WORK_PATH/trunk/tools
+          #sed -i "s#1.15.2#1.21.1#g" ./Makefile
+          #sed -i "s#https://gomirrors.org/dl/go#https://dl.google.com/go#g" ./Makefile
+          echo "复制配置文件结束"  
+      - name: Recovery theme files download from remote
+        if: github.event.inputs.theme == 'true'
+        run: |
+          sudo rm -rf $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/bootstrap
+          sudo rm -rf $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/images
+          cp -rf theme/. $WORK_PATH/trunk/user/www/n56u_ribbon_fixed
+          echo "复制主题文件结束"  
+      - name: Recovery wifi files download from remote
+        if: github.event.inputs.wifi == 'true'
+        run: |          
+          sudo rm -rf $WORK_PATH/trunk/proprietary/rt_wifi/rtpci/3.0.X.X/mt76x2
+          sudo rm -rf $WORK_PATH/trunk/proprietary/rt_wifi/rtpci/3.0.X.X/mt76x2_ap
+          sudo rm -rf $WORK_PATH/trunk/proprietary/rt_wifi/rtsoc/2.4.X.X
+          sudo rm -rf $WORK_PATH/trunk/proprietary/rt_wifi/rtsoc/2.7.X.X
+          cp -f K2-wifi/ra_nat.c $WORK_PATH/trunk/proprietary/rt_ppe/hw_nat/ra_nat.c
+          cp -rf K2-wifi/rtpci/. $WORK_PATH/trunk/proprietary/rt_wifi/rtpci/3.0.X.X
+          cp -rf K2-wifi/rtsoc/. $WORK_PATH/trunk/proprietary/rt_wifi/rtsoc
+          echo "复制wifi文件结束" 
+
+      - name: Build Firmware
+        run: |
+          cd /opt/rt-n56u/trunk
+          if [ ! -f configs/templates/$TNAME.config ] ; then
+          echo "configs/templates/$TNAME.config not found "
+          exit 1
+          fi
+          cp -f configs/templates/$TNAME.config .config
+          sed -i '/CONFIG_FIRMWARE_INCLUDE_SFE/d' configs/templates/$TNAME.config #删除配置项SFE加速
+          echo "CONFIG_FIRMWARE_INCLUDE_SFE=n" >> configs/templates/$TNAME.config #集成SFE加速
+          sed -i '/CONFIG_FIRMWARE_INCLUDE_REDSOCKS/d' configs/templates/$TNAME.config
+          echo "CONFIG_FIRMWARE_INCLUDE_REDSOCKS=y" >> configs/templates/$TNAME.config
+          sudo ./clear_tree
+          sudo ./build_firmware_modify $TNAME 0
+          sudo mv -f images/*.trx /opt/images/${TNAME}.trx
+          cp -f .config /opt/images/${TNAME}.config
+          echo "build_time=$(date '+%Y年%m月%d日%H:%M:%S' | jq -sRr @uri)" >> $GITHUB_ENV
+          echo "tag=$(date '+%Y-%m-%d')" >> $GITHUB_ENV
+          
+      - name : Upload packages
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: hanwckf_K1s-Padavan-packages
+          path: /opt/images
