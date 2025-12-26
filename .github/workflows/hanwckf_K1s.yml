@@ -108,7 +108,7 @@ jobs:
       - name: Build update config
         run: |
           cd /opt/rt-n56u/trunk
-          make oldconfig
+          make PSG1208s.config
 
       - name: Build Firmware
         run: |
