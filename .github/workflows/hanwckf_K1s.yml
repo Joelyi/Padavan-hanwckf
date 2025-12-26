@@ -70,7 +70,7 @@ jobs:
       - name: Recovery Padavan files download from remote
         if: github.event.inputs.padavanbin == 'true'
         run: |
-          #cp -rf Padavan/netfilter/Kconfig $WORK_PATH/trunk/linux-3.4.x/net/netfilter/Kconfig
+          cp -rf Padavan/netfilter/Kconfig $WORK_PATH/trunk/linux-3.4.x/net/netfilter/Kconfig
       - name: Recovery asp files download from remote
         if: github.event.inputs.padavanbin == 'true'
         run: |
@@ -108,7 +108,7 @@ jobs:
       - name: Build update config
         run: |
           cd /opt/rt-n56u/trunk
-          make PSG1208s.config
+          make config
 
       - name: Build Firmware
         run: |
