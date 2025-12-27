@@ -70,10 +70,26 @@ jobs:
       - name: Recovery Padavan files download from remote
         if: github.event.inputs.padavanbin == 'true'
         run: |
-          cp -rf Padavan/netfilter/Kconfig $WORK_PATH/trunk/linux-3.4.x/net/netfilter/Kconfig
+          sudo rm -rf $WORK_PATH/trunk/user/smartdns
+          cp -rf Padavan/smartdns $WORK_PATH/trunk/user
+          cp -rf Padavan/httpd/common.h $WORK_PATH/trunk/user/httpd/common.h
+          cp -rf Padavan/httpd/variables.c $WORK_PATH/trunk/user/httpd/variables.c
+          cp -rf Padavan/httpd/web_ex.c $WORK_PATH/trunk/user/httpd/web_ex.c
+          cp -rf Padavan/iptables-1.4.16.3/configure $WORK_PATH/trunk/user/iptables/iptables-1.4.16.3/configure
+          cp -rf Padavan/rc/rc.c $WORK_PATH/trunk/user/rc/rc.c
+          cp -rf Padavan/rc/services.c $WORK_PATH/trunk/user/rc/services.c
+          cp -rf Padavan/scripts/Makefile $WORK_PATH/trunk/user/scripts/Makefile
+          cp -rf Padavan/scripts/copyscripts.sh $WORK_PATH/trunk/user/scripts/copyscripts.sh
+          cp -rf Padavan/scripts/mtd_storage.sh‎ $WORK_PATH/trunk/user/scripts/mtd_storage.sh‎
+          cp -rf Padavan/build_firmware_modify $WORK_PATH/trunk/build_firmware_modify
       - name: Recovery asp files download from remote
         if: github.event.inputs.padavanbin == 'true'
         run: |
+          cp -f Padavan/www/n56u_ribbon_fixed/Advanced_smartdns.asp $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/Advanced_smartdns.asp
+          cp -f Padavan/www/dict/CN.dict $WORK_PATH/trunk/user/www/dict/CN.dict
+          cp -f Padavan/shared/defaults.c $WORK_PATH/trunk/user/shared/defaults.c
+          cp -f Padavan/shared/cflags.mk $WORK_PATH/trunk/user/shared/cflags.mk
+          cp -f Padavan/shared/notify_rc.h $WORK_PATH/trunk/user/shared/notify_rc.h
           echo "复制Padavan文件结束"  
       - name: Recovery bin files download from remote
         if: github.event.inputs.config == 'true'
