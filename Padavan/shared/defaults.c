@@ -949,6 +949,12 @@ struct nvram_pair tables_defaults[] = {
 	{ "sr_matric_x", "" },
 	{ "sr_if_x", "" },
 
+	{ "sdnss_enable_x", "" },
+	{ "sdnss_name_x", "" },
+	{ "sdnss_ip_x", "" },
+	{ "sdnss_port_x", "" },
+	{ "sdnss_type_x", "" },
+			
 	{ "dhcp_staticmac_x", "" },
 	{ "dhcp_staticip_x", "" },
 	{ "dhcp_staticname_x", "" },
