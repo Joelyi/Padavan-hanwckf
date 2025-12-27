@@ -120,6 +120,10 @@ load_wireless_modules(void)
 	module_smart_load("mt_7615e", NULL);
 #endif
 
+#if defined (USE_MT7915_AP)
+	module_smart_load("mt_7915", NULL);
+#endif
+
 #if defined (USE_RT3090_AP)
 	module_smart_load("rt3090_ap", NULL);
 #elif defined (USE_RT5392_AP)
@@ -180,6 +184,9 @@ load_mmc_modules(void)
 {
 	/* start mmc block device */
 	module_smart_load("mmc_block", NULL);
+
+	module_smart_load("sdhci", NULL);
+	module_smart_load("sdhci-pltfm", NULL);
 
 	/* start mmc host */
 #if defined (USE_MTK_MMC)
@@ -274,6 +281,13 @@ init_gpio_leds_buttons(void)
 #endif
 	/* show PWR soft-led  */
 #if defined (BOARD_GPIO_LED_POWER)
+#if defined (BOARD_CR660x)
+	cpu_gpio_set_pin_direction(14, 1);
+	cpu_gpio_set_pin(14, LED_OFF);
+#elif defined (BOARD_Q20)
+	cpu_gpio_set_pin_direction(14, 1);
+	cpu_gpio_set_pin(14, LED_ON); // set GPIO to low
+#endif
 	cpu_gpio_set_pin_direction(BOARD_GPIO_LED_POWER, 1);
 	LED_CONTROL(BOARD_GPIO_LED_POWER, LED_ON);
 #endif
@@ -799,6 +813,12 @@ LED_CONTROL(int gpio_led, int flag)
 #endif
 #endif
 	{
+#if defined (BOARD_HC5761A)
+		if (gpio_led == BOARD_GPIO_LED_SW5G) {
+			cpu_gpio_mode_set_bit(40, 1);
+			cpu_gpio_mode_set_bit(41, 0);
+		}
+#endif
 		if (is_soft_blink)
 			cpu_gpio_led_enabled(gpio_led, (flag == LED_OFF) ? 0 : 1);
 		
@@ -894,6 +914,13 @@ init_router(void)
 	if (log_remote)
 		start_logger(1);
 
+#if defined (BOARD_HC5761A)
+	cpu_gpio_mode_set_bit(38, 1);
+	cpu_gpio_mode_set_bit(39, 0);
+	cpu_gpio_set_pin_direction(BOARD_GPIO_PWR_USB, 1);
+	cpu_gpio_set_pin(BOARD_GPIO_PWR_USB, BOARD_GPIO_PWR_USB_ON);
+#endif
+
 	start_dns_dhcpd(is_ap_mode);
 #if defined (APP_SMBD) || defined (APP_NMBD)
 	start_wins();
@@ -921,7 +948,6 @@ init_router(void)
 		restart_crond();
 	}
 	// system ready
-	system("/usr/bin/copyscripts.sh &");
 	system("/etc/storage/started_script.sh &");
 }
 
@@ -997,7 +1023,7 @@ void
 handle_notifications(void)
 {
 	int i, stop_handle = 0;
-	char notify_name[256];
+	char notify_name[300];
 
 	DIR *directory = opendir(DIR_RC_NOTIFY);
 	if (!directory)
@@ -1287,26 +1313,10 @@ handle_notifications(void)
 			restart_vlmcsd();
 		}
 #endif
-#if defined(APP_ADBYBY)
-		else if (strcmp(entry->d_name, RCN_RESTART_ADBYBY) == 0)
-		{
-			restart_adbyby();
-		}
-		else if (strcmp(entry->d_name, RCN_RESTART_UPDATEADB) == 0)
-		{
-			update_adb();
-		}
-#endif
 #if defined(APP_SMARTDNS)
 		else if (strcmp(entry->d_name, RCN_RESTART_SMARTDNS) == 0)
 		{
 			restart_smartdns();
-		}
-#endif
-#if defined(APP_ALIDDNS)
-		else if (strcmp(entry->d_name, RCN_RESTART_ALIDDNS) == 0)
-		{
-			restart_aliddns();
 		}
 #endif
 #if defined(APP_DNSFORWARDER)
