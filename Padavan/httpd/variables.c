@@ -1028,12 +1028,12 @@
 #if defined(APP_SHADOWSOCKS)
 		{"ShadowsocksConf",		variables_ShadowsocksConf},
 #endif
-		{"LANGUAGE",			variables_Language},
-		{0,0}
-	};
 #if defined(APP_SMARTDNS)
 		{"SmartdnsConf",		variables_SmartdnsConf},
 #endif
+		{"LANGUAGE",			variables_Language},
+		{0,0}
+	};
 
 	struct evDesc events_desc[] = {
 		{EVM_RESTART_IPV6,		EVT_RESTART_IPV6,		RCN_RESTART_IPV6,	EVM_RESTART_DHCPD|EVM_RESTART_RADV|EVM_RESTART_IPTV|EVM_RESTART_DI|EVM_RESTART_UPNP|EVM_RESTART_FIREWALL|EVM_RESTART_VPNCLI|EVM_RESTART_SWITCH_VLAN|EVM_RESTART_LAN|EVM_RESTART_WAN|EVM_RESTART_MODEM},
