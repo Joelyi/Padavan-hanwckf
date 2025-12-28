@@ -79,6 +79,7 @@ jobs:
           cp -rf Padavan/iptables-1.4.16.3/configure $WORK_PATH/trunk/user/iptables/iptables-1.4.16.3/configure
           cp -rf Padavan/rc/rc.c $WORK_PATH/trunk/user/rc/rc.c
           cp -rf Padavan/rc/services.c $WORK_PATH/trunk/user/rc/services.c
+          cp -rf Padavan/scripts/autostart.sh $WORK_PATH/trunk/user/scripts/autostart.sh
           cp -rf Padavan/scripts/Makefile $WORK_PATH/trunk/user/scripts/Makefile
           cp -rf Padavan/scripts/copyscripts.sh $WORK_PATH/trunk/user/scripts/copyscripts.sh
           cp -rf Padavan/scripts/mtd_storage.sh‎ $WORK_PATH/trunk/user/scripts/mtd_storage.sh‎
