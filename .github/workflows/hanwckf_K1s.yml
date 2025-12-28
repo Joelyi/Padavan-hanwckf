@@ -72,6 +72,7 @@ jobs:
         run: |
           sudo rm -rf $WORK_PATH/trunk/user/smartdns
           cp -rf Padavan/smartdns $WORK_PATH/trunk/user
+          cp -rf Padavan/user/Makefile $WORK_PATH/trunk/user/Makefile
           cp -rf Padavan/httpd/common.h $WORK_PATH/trunk/user/httpd/common.h
           cp -rf Padavan/httpd/variables.c $WORK_PATH/trunk/user/httpd/variables.c
           cp -rf Padavan/httpd/web_ex.c $WORK_PATH/trunk/user/httpd/web_ex.c
