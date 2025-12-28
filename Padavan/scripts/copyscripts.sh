@@ -1,25 +1,9 @@
 #!/bin/sh
 mkdir -p /etc/ssl
 tar -xzf /etc_ro/certs.tgz -C /etc/ssl
-if [ ! -f "/etc/storage/koolproxy_rules_script.sh" ] ; then
-cp -rf /etc_ro/koolproxy_rules_script.sh /etc/storage/
-chmod 755 "/etc/storage/koolproxy_rules_script.sh"
-fi
-if [ ! -f "/etc/storage/koolproxy_rules_list.sh" ] ; then
-cp -rf /etc_ro/koolproxy_rules_list.sh /etc/storage/
-chmod 755 "/etc/storage/koolproxy_rules_list.sh"
-fi
 if [ ! -f "/etc/storage/ad_config_script.sh" ] ; then
 cp -rf /etc_ro/ad_config_script.sh /etc/storage/
 chmod 755 "/etc/storage/ad_config_script.sh"
-fi
-if [ ! -f "/etc/storage/frp_script.sh" ] ; then
-cp -rf /etc_ro/frp_script.sh /etc/storage/
-chmod 755 "/etc/storage/frp_script.sh"
-fi
-if [ ! -f "/etc/storage/caddy_script.sh" ] ; then
-cp -rf /etc_ro/caddy_script.sh /etc/storage/
-chmod 755 "/etc/storage/caddy_script.sh"
 fi
 if [ ! -f "/etc/storage/smartdns_address.conf" ] ; then
 cp -rf /etc_ro/smartdns_address.conf /etc/storage/
@@ -40,30 +24,6 @@ fi
 if [ ! -f "/etc/storage/ddns_script.sh" ] ; then
 cp -rf /etc_ro/ddns_script.sh /etc/storage/
 chmod 755 "/etc/storage/ddns_script.sh"
-fi
-if [ ! -f "/etc/storage/adbyby_adblack.sh" ] ; then
-cp -rf /etc_ro/adbyby_adblack.sh /etc/storage/
-chmod 755 "/etc/storage/adbyby_adblack.sh"
-fi
-if [ ! -f "/etc/storage/adbyby_adesc.sh" ] ; then
-cp -rf /etc_ro/adbyby_adesc.sh /etc/storage/
-chmod 755 "/etc/storage/adbyby_adesc.sh"
-fi
-if [ ! -f "/etc/storage/adbyby_adhost.sh" ] ; then
-cp -rf /etc_ro/adbyby_adhost.sh /etc/storage/
-chmod 755 "/etc/storage/adbyby_adhost.sh"
-fi
-if [ ! -f "/etc/storage/adbyby_host.sh" ] ; then
-cp -rf /etc_ro/adbyby_host.sh /etc/storage/
-chmod 755 "/etc/storage/adbyby_host.sh"
-fi
-if [ ! -f "/etc/storage/adbyby_blockip.sh" ] ; then
-cp -rf /etc_ro/adbyby_blockip.sh /etc/storage/
-chmod 755 "/etc/storage/adbyby_blockip.sh"
-fi
-if [ ! -f "/etc/storage/adbyby_rules.sh" ] ; then
-cp -rf /etc_ro/adbyby_rules.sh /etc/storage/
-chmod 755 "/etc/storage/adbyby_rules.sh"
 fi
 if [ ! -f "/etc/storage/ss_dlink.sh" ] ; then
 cp -rf /etc_ro/ss_dlink.sh /etc/storage/
