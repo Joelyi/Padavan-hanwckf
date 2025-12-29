@@ -99,6 +99,10 @@
 			{"sdnss_ip_x", "24", NULL, FALSE},
 			{"sdnss_port_x", "24", NULL, FALSE},
 			{"sdnss_type_x", "24", NULL, FALSE},
+			{"sdnss_ipc_x", "24", NULL, FALSE},
+			{"sdnss_named_x", "24", NULL, FALSE},
+			{"sdnss_non_x", "24", NULL, FALSE},
+			{"sdnss_ipset_x", "24", NULL, FALSE},
 			{0,0,0,0}
 		};
 		
