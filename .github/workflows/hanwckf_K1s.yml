@@ -68,7 +68,6 @@ jobs:
         run: |
           sudo rm -rf $WORK_PATH/trunk/user/smartdns
           cp -rf Padavan/smartdns $WORK_PATH/trunk/user
-          #cp -rf Padavan/user/Makefile $WORK_PATH/trunk/user/Makefile
           cp -rf Padavan/httpd/common.h $WORK_PATH/trunk/user/httpd/common.h
           cp -rf Padavan/httpd/variables.c $WORK_PATH/trunk/user/httpd/variables.c
           cp -rf Padavan/httpd/web_ex.c $WORK_PATH/trunk/user/httpd/web_ex.c
@@ -84,7 +83,6 @@ jobs:
         if: github.event.inputs.padavanbin == 'true'
         run: |
           cp -f Padavan/www/n56u_ribbon_fixed/Advanced_smartdns.asp $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/Advanced_smartdns.asp
-          cp -f Padavan/www/n56u_ribbon_fixed/Advanced_web.asp $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/Advanced_web.asp
           cp -f Padavan/www/n56u_ribbon_fixed/state.js $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/state.js
           cp -f Padavan/www/dict/CN.dict $WORK_PATH/trunk/user/www/dict/CN.dict
           cp -f Padavan/shared/defaults.c $WORK_PATH/trunk/user/shared/defaults.c
