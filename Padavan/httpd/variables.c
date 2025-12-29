@@ -83,82 +83,16 @@
 			{"dhcp_staticname_x", "24", NULL, FALSE},
 			{0,0,0,0}
 		};
-		
-	struct variable variables_KoolproxyConf_KpIPList[] = {
-			{"koolproxy_mac_x", "14", NULL, FALSE},
-			{"koolproxy_ip_x", "17", NULL, FALSE},
-			{"koolproxy_name_x", "24", NULL, FALSE},
-			{"koolproxy_ip_road", "24", NULL, FALSE},
-			{0,0,0,0}
-		};
-	
-	struct variable variables_AdbybyConf_AdIPList[] = {
-			{"adbybyip_mac_x", "14", NULL, FALSE},
-			{"adbybyip_ip_x", "17", NULL, FALSE},
-			{"adbybyip_name_x", "24", NULL, FALSE},
-			{"adbybyip_ip_road_x", "24", NULL, FALSE},
-			{0,0,0,0}
-		};
-	struct variable variables_WyyConf_WIPList[] = {
-			{"wyy_mac_x", "14", NULL, FALSE},
-			{"wyy_ip_x", "17", NULL, FALSE},
-			{"wyy_name_x", "24", NULL, FALSE},
-			{"wyy_ip_road_x", "24", NULL, FALSE},
-			{0,0,0,0}
-		};
-	struct variable variables_ZeroConf_ZeroList[] = {
-			{"zero_enable_x", "24", NULL, FALSE},
-			{"zero_ip_x", "24", NULL, FALSE},
-			{"zero_route_x", "24", NULL, FALSE},
-			{0,0,0,0}
-		};
-	struct variable variables_SspConf_SspList[] = {
-			{"ssp_type_x", "24", NULL, FALSE},
-			{"ssp_name_x", "24", NULL, FALSE},
-			{"ssp_server_x", "24", NULL, FALSE},
-			{"ssp_prot_x", "24", NULL, FALSE},
-			{"ss_key_x", "24", NULL, FALSE},
-			{"s5_username_x", "24", NULL, FALSE},
-			{"s5_password_x", "24", NULL, FALSE},
-			{"ss_method_x", "24", NULL, FALSE},
-			{"ss_protocol_x", "24", NULL, FALSE},
-			{"ss_proto_param_x", "24", NULL, FALSE},
-			{"ss_obfs_x", "24", NULL, FALSE},
-			{"ss_obfs_param_x", "24", NULL, FALSE},
-			//{"ssp_local_port_x", "24", NULL, FALSE},
-			{"v2_aid_x", "24", NULL, FALSE},
-			{"v2_vid_x", "24", NULL, FALSE},
-			{"v2_security_x", "24", NULL, FALSE},
-			{"v2_net_x", "24", NULL, FALSE},
-			{"v2_type_x", "24", NULL, FALSE},
-			{"v2_type_tcp_x", "24", NULL, FALSE},
-			{"v2_type_mkcp_x", "24", NULL, FALSE},
-			{"v2_mkcp_mtu_x", "24", NULL, FALSE},
-			{"v2_mkcp_tti_x", "24", NULL, FALSE},
-			{"v2_mkcp_uplink_x", "24", NULL, FALSE},
-			{"v2_mkcp_downlink_x", "24", NULL, FALSE},
-			{"v2_mkcp_readbu_x", "24", NULL, FALSE},
-			{"v2_mkcp_writebu_x", "24", NULL, FALSE},
-			{"v2_mkcp_congestion_x", "24", NULL, FALSE},
-			{"v2_webs_host_x", "24", NULL, FALSE},
-			{"v2_webs_path_x", "24", NULL, FALSE},
-			{"v2_http2_host_x", "24", NULL, FALSE},
-			{"v2_http2_path_x", "24", NULL, FALSE},
-			{"v2_quic_header_x", "24", NULL, FALSE},
-			{"v2_quic_key_x", "24", NULL, FALSE},
-			{"v2_quic_security_x", "24", NULL, FALSE},
-			{"v2_tls_x", "24", NULL, FALSE},
-			{"tj_tls_host_x", "24", NULL, FALSE},
-			{"switch_enable_x", "24", NULL, FALSE},
+
+	struct variable variables_LANHostConfig_VPNSACLList[] = {
+			{"vpns_user_x", "32", NULL, FALSE},
+			{"vpns_pass_x", "32", NULL, FALSE},
+			{"vpns_addr_x", "3", NULL, FALSE},
+			{"vpns_rnet_x", "20", NULL, FALSE},
+			{"vpns_rmsk_x", "20", NULL, FALSE},
 			{0,0,0,0}
 		};
 
-	struct variable variables_AdbybyConf_AdRULESList[] = {
-			{"adbybyrules_x", "24", NULL, FALSE},
-			{"adbybyrules_road_x", "24", NULL, FALSE},
-			{0,0,0,0}
-		};
-		
 	struct variable variables_SmartdnsConf_SdnsList[] = {
 			{"sdnss_enable_x", "24", NULL, FALSE},
 			{"sdnss_name_x", "24", NULL, FALSE},
@@ -169,15 +103,6 @@
 			{"sdnss_named_x", "24", NULL, FALSE},
 			{"sdnss_non_x", "24", NULL, FALSE},
 			{"sdnss_ipset_x", "24", NULL, FALSE},
-			{0,0,0,0}
-		};
-		
-	struct variable variables_LANHostConfig_VPNSACLList[] = {
-			{"vpns_user_x", "32", NULL, FALSE},
-			{"vpns_pass_x", "32", NULL, FALSE},
-			{"vpns_addr_x", "3", NULL, FALSE},
-			{"vpns_rnet_x", "20", NULL, FALSE},
-			{"vpns_rmsk_x", "20", NULL, FALSE},
 			{0,0,0,0}
 		};
 
@@ -742,20 +667,7 @@
 			{"ddns2_hname", "", NULL, EVM_RESTART_DDNS },
 			{"ddns2_user", "", NULL, EVM_RESTART_DDNS },
 			{"ddns2_pass", "", NULL, EVM_RESTART_DDNS },
-#if defined(APP_ALIDDNS)
-            {"aliddns_enable", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_interval", "", NULL, EVM_RESTART_ALIDDNS },
-            {"aliddns_ttl", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_ak", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_sk", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_name", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_name2", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_name6", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_domain", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_domain2", "", NULL, EVM_RESTART_ALIDDNS },
-			{"aliddns_domain6", "", NULL, EVM_RESTART_ALIDDNS },
-			{"scripts.ddns_script.sh", "File", NULL, EVM_RESTART_ALIDDNS},
-#endif
+
 			{"ManualDHCPList", "Group", ARGV((char*)variables_LANHostConfig_ManualDHCPList, "8", "55", "dhcp_staticnum_x"), EVM_RESTART_DHCPD},
 			{"VPNSACLList", "Group", ARGV((char*)variables_LANHostConfig_VPNSACLList, "8", "107", "vpns_num_x"), EVM_RESTART_VPNSVR},
 			{0,0,0,0}
@@ -847,7 +759,7 @@
 #if defined(USE_MT76X2_AP)
 			{"wl_VgaClamp", "", NULL, EVM_RESTART_WIFI5},
 #endif
-#if defined (USE_WID_5G) && USE_WID_5G==7615
+#if defined (USE_WID_5G) && (USE_WID_5G==7615 || USE_WID_5G==7915)
 			{"wl_mumimo", "", NULL, EVM_RESTART_WIFI5},
 #endif
 			{"wl_country_code", "", NULL, EVM_RESTART_WIFI5},
@@ -937,58 +849,6 @@
 	};
 #endif
 
-#if defined(APP_FRP)
-	struct variable variables_FrpConf[] = {
-			{"frpc_enable", "", NULL, EVM_RESTART_FRP},
-			{"frps_enable", "", NULL, EVM_RESTART_FRP},
-			{"scripts.frp_script.sh", "File", NULL, EVM_RESTART_FRP},
-			{0,0,0,0}
-	};
-#endif
-
-#if defined(APP_CADDY)
-	struct variable variables_CaddyConf[] = {
-			{"caddy_enable", "", NULL, EVM_RESTART_CADDY},
-			{"caddy_file", "", NULL, EVM_RESTART_CADDY},
-			{"caddy_wan", "", NULL, EVM_RESTART_CADDY},
-			{"caddy_storage", "", NULL, EVM_RESTART_CADDY},
-			{"caddy_dir", "", NULL, EVM_RESTART_CADDY},
-			{"caddyf_wan_port", "", NULL, EVM_RESTART_CADDY},
-			{"caddyw_wan_port", "", NULL, EVM_RESTART_CADDY},
-			{"caddy_wip6", "", NULL, EVM_RESTART_CADDY},
-			{"caddy_wname", "", NULL, EVM_RESTART_CADDY},
-			{"caddy_wpassword", "", NULL, EVM_RESTART_CADDY},
-			{"scripts.caddy_script.sh", "File", NULL, EVM_RESTART_CADDY},
-			{0,0,0,0}
-	};
-#endif
-
-#if defined(APP_WYY)
-	struct variable variables_WyyConf[] = {
-			{"wyy_enable", "", NULL, EVM_RESTART_WYY},
-			{"wyy_apptype", "", NULL, EVM_RESTART_WYY},
-			{"wyy_cloudserver", "", NULL, EVM_RESTART_WYY},
-			{"wyy_musicapptype", "", NULL, EVM_RESTART_WYY},
-			{"wyy_coustom_server", "", NULL, EVM_RESTART_WYY},
-			{"wyy_coustom_music", "", NULL, EVM_RESTART_WYY},
-			{"wyy_flac", "", NULL, EVM_RESTART_WYY},
-			{"wyy_staticnum_x", "", NULL, EVM_RESTART_WYY},
-			{"WIPList", "Group", ARGV((char*)variables_WyyConf_WIPList, "8", "55", "wyy_staticnum_x"), EVM_RESTART_WYY},
-			{0,0,0,0}
-	};
-#endif
-
-#if defined(APP_ZEROTIER)
-	struct variable variables_ZeroConf[] = {
-			{"zerotier_enable", "", NULL, EVM_RESTART_ZEROTIER},
-			{"zerotier_id", "", NULL, EVM_RESTART_ZEROTIER},
-			{"zerotier_nat", "", NULL, EVM_RESTART_ZEROTIER},
-			{"zero_staticnum_x", "", NULL, EVM_RESTART_ZEROTIER},
-			{"ZeroList", "Group", ARGV((char*)variables_ZeroConf_ZeroList, "8", "55", "zero_staticnum_x"), EVM_RESTART_ZEROTIER},
-			{0,0,0,0}
-	};
-#endif
-
 #if defined(APP_SHADOWSOCKS)
 	struct variable variables_ShadowsocksConf[] = {
 			{"ss_enable","",NULL, EVM_RESTART_SHADOWSOCKS},
@@ -1074,70 +934,6 @@
 			{"scripts.ss_wan_ip.sh", "File", NULL, EVM_RESTART_SHADOWSOCKS},
 			{"scripts.ss_dlink.sh", "File", NULL, FALSE},
 			{"SspList", "Group", ARGV((char*)variables_SspConf_SspList, "8", "55", "ssp_staticnum_x"), EVM_RESTART_SHADOWSOCKS},
-			{0,0,0,0}
-	};
-#endif
-
-#if defined(APP_KOOLPROXY)
-    struct variable variables_KoolproxyConf[] = {
-			{"koolproxy_enable", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"hosts_ad", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"tv_hosts", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"koolproxy_set", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"koolproxy_cpu", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"koolproxy_https", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"koolproxy_video", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"koolproxy_prot", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"koolproxy_update", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"kp_staticnum_x", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"rules_list", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"koolproxy_txt_2", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"daily_txt_2", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"kp_dat_2", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"ss_DNS_Redirect_IP", "", NULL, EVM_RESTART_KOOLPROXY},
-			{"scripts.koolproxy_rules_list.sh", "File", NULL, EVM_RESTART_KOOLPROXY},
-			{"scripts.koolproxy_rules_script.sh", "File", NULL, EVM_RESTART_KOOLPROXY},
-			{"scripts.ad_config_script.sh", "File", NULL, EVM_RESTART_KOOLPROXY},
-			{"KpIPList", "Group", ARGV((char*)variables_KoolproxyConf_KpIPList, "8", "55", "kp_staticnum_x"), EVM_RESTART_KOOLPROXY},
-			{0,0,0,0}
-	};
-#endif
-
-#if defined(APP_ADGUARDHOME)
-    struct variable variables_AdguardHomeConf[] = {
-			{"adg_enable", "", NULL, EVM_RESTART_ADGUARDHOME},
-			{"adg_redirect", "", NULL, EVM_RESTART_ADGUARDHOME},
-			{0,0,0,0}
-	};
-#endif
-
-#if defined(APP_ADBYBY)
-    struct variable variables_AdbybyConf[] = {
-			{"adbyby_enable", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_ip_x", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_rules_x", "", NULL, EVM_RESTART_ADBYBY},
-			{"hosts_ad", "", NULL, EVM_RESTART_ADBYBY},
-			{"tv_hosts", "", NULL, EVM_RESTART_ADBYBY},
-			{"block_ios", "", NULL, EVM_RESTART_ADBYBY},
-			{"block_douyin", "", NULL, EVM_RESTART_ADBYBY},
-			{"anti_ad", "", NULL, EVM_RESTART_ADBYBY},
-			{"anti_ad_link", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_set", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_adb_update", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_update", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_update_hour", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_update_min", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbybyip_staticnum_x", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbybyrules_staticnum_x", "", NULL, EVM_RESTART_ADBYBY},
-			{"scripts.adbyby_rules.sh", "File", NULL, EVM_RESTART_ADBYBY},
-			{"scripts.adbyby_blockip.sh", "File", NULL, EVM_RESTART_ADBYBY},
-			{"scripts.adbyby_adblack.sh", "File", NULL, EVM_RESTART_ADBYBY},
-			{"scripts.adbyby_adesc.sh", "File", NULL, EVM_RESTART_ADBYBY},
-			{"scripts.adbyby_adhost.sh", "File", NULL, EVM_RESTART_ADBYBY},
-			{"scripts.adbyby_config_script.sh", "File", NULL, EVM_RESTART_ADBYBY},
-			{"scripts.adbyby_host.sh", "File", NULL, EVM_RESTART_ADBYBY},
-			{"AdIPList", "Group", ARGV((char*)variables_AdbybyConf_AdIPList, "8", "55", "adbybyip_staticnum_x"), EVM_RESTART_ADBYBY},
-			{"AdRULESList", "Group", ARGV((char*)variables_AdbybyConf_AdRULESList, "8", "55", "adbybyrules_staticnum_x"), EVM_RESTART_ADBYBY},
 			{0,0,0,0}
 	};
 #endif
@@ -1251,9 +1047,8 @@
 #if defined(USE_MT76X2_AP)
 			{"rt_VgaClamp", "", NULL, EVM_RESTART_WIFI2},
 #endif
-#if defined (USE_WID_2G) && USE_WID_2G==7615
+#if defined (USE_WID_2G) && (USE_WID_2G==7615 || USE_WID_2G==7915)
 			{"rt_turbo_qam", "", NULL, EVM_RESTART_WIFI2},
-			{"rt_airtimefairness", "", NULL, EVM_RESTART_WIFI2},
 #endif
 			{"rt_country_code", "", NULL, EVM_RESTART_WIFI2},
 			{"rt_stream_tx", "", NULL, EVM_RESTART_WIFI2},
@@ -1311,9 +1106,6 @@
 #if defined(APP_DNSFORWARDER)
 		{"dnsforwarderConf",		variables_dnsforwarderConf},
 #endif
-#if defined(APP_FRP)
-		{"FrpConf",		variables_FrpConf},
-#endif
 #if defined(APP_SCUT)
 		{"ScutclientConf",		variables_ScutclientConf},
 #endif
@@ -1322,24 +1114,6 @@
 #endif
 #if defined(APP_SHADOWSOCKS)
 		{"ShadowsocksConf",		variables_ShadowsocksConf},
-#endif
-#if defined(APP_KOOLPROXY)
-		{"KoolproxyConf",		variables_KoolproxyConf},
-#endif
-#if defined(APP_ADGUARDHOME)
-		{"AdguardHomeConf",		variables_AdguardHomeConf},
-#endif
-#if defined(APP_CADDY)
-		{"CaddyConf",		variables_CaddyConf},
-#endif
-#if defined(APP_WYY)
-		{"WyyConf",		variables_WyyConf},
-#endif
-#if defined(APP_ZEROTIER)
-		{"ZeroConf",		variables_ZeroConf},
-#endif
-#if defined(APP_ADBYBY)
-		{"AdbybyConf",		variables_AdbybyConf},
 #endif
 #if defined(APP_SMARTDNS)
 		{"SmartdnsConf",		variables_SmartdnsConf},
@@ -1424,36 +1198,12 @@
 #if defined(APP_DNSFORWARDER)
 		{EVM_RESTART_DNSFORWARDER,	EVT_RESTART_DNSFORWARDER,	RCN_RESTART_DNSFORWARDER, 0},
 #endif
-#if defined(APP_FRP)
-		{EVM_RESTART_FRP,	EVT_RESTART_FRP,	RCN_RESTART_FRP, 0},
-#endif
 #if defined(APP_SHADOWSOCKS)
 		{EVM_RESTART_SHADOWSOCKS,	EVT_RESTART_SHADOWSOCKS,	RCN_RESTART_SHADOWSOCKS,  0},
 		{EVM_RESTART_SS_TUNNEL,		EVT_RESTART_SS_TUNNEL,		RCN_RESTART_SS_TUNNEL,	  0},
 #endif
-#if defined(APP_KOOLPROXY)
-		{EVM_RESTART_KOOLPROXY,		EVT_RESTART_KOOLPROXY,		RCN_RESTART_KOOLPROXY,	0},
-#endif
-#if defined(APP_ADGUARDHOME)
-		{EVM_RESTART_ADGUARDHOME,		EVT_RESTART_ADGUARDHOME,		RCN_RESTART_ADGUARDHOME,	0},
-#endif
-#if defined(APP_CADDY)
-		{EVM_RESTART_CADDY,		EVT_RESTART_CADDY,		RCN_RESTART_CADDY,	0},
-#endif
-#if defined(APP_WYY)
-		{EVM_RESTART_WYY,		EVT_RESTART_WYY,		RCN_RESTART_WYY,	0},
-#endif
-#if defined(APP_ZEROTIER)
-		{EVM_RESTART_ZEROTIER,		EVT_RESTART_ZEROTIER,		RCN_RESTART_ZEROTIER,	0},
-#endif
-#if defined(APP_ADBYBY)
-		{EVM_RESTART_ADBYBY,		EVT_RESTART_ADBYBY,		RCN_RESTART_ADBYBY,	0},
-#endif
 #if defined(APP_SMARTDNS)
 		{EVM_RESTART_SMARTDNS,		EVT_RESTART_SMARTDNS,		RCN_RESTART_SMARTDNS,	0},
-#endif
-#if defined(APP_ALIDDNS)
-		{EVM_RESTART_ALIDDNS,		EVT_RESTART_ALIDDNS,		RCN_RESTART_ALIDDNS,	0},
 #endif
 #if defined(APP_SMBD) || defined(APP_NMBD)
 		{EVM_RESTART_NMBD,		EVT_RESTART_NMBD,		RCN_RESTART_NMBD,	0},
