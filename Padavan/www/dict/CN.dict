@@ -883,6 +883,7 @@ menu5_18_16_1=SCAU (1)
 menu5_18_17=客户端版本号
 menu5_18_18=数据文件目录
 menu5_18_19=DHCP脚本
+menu5_21_1=DNS加速
 menu5_24=SmartDNS
 menu5_24_1=SmartDNS
 menu5_29=DNS服务
