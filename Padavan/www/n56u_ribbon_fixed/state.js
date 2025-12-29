@@ -377,8 +377,8 @@ function show_banner(L3){
 	show_top_status();
 }
 
-var tabtitle = new Array(21);
-var tablink = new Array(21);
+var tabtitle = new Array(15);
+var tablink = new Array(15);
 tabtitle[0] = new Array("", "<#menu5_1_1#>", "<#menu5_1_2#>", "<#menu5_1_3#>", "<#menu5_1_4#>", "<#menu5_1_5#>", "<#menu5_1_6#>");
 tabtitle[1] = new Array("", "<#menu5_1_1#>", "<#menu5_1_2#>", "<#menu5_1_3#>", "<#menu5_1_4#>", "<#menu5_1_5#>", "<#menu5_1_6#>");
 tabtitle[2] = new Array("", "<#menu5_2_1#>", "<#menu5_2_2#>", "<#menu5_2_3#>", "<#menu5_2_4#>", "<#menu5_2_5#>", "<#menu5_2_6#>");
@@ -404,6 +404,7 @@ if (found_app_mentohust()){
 if (found_app_smartdns()){
 	tabtitle[15] = new Array("", "<#menu5_29#>");	
 }
+
 //Level 3 Tab title
 
 tablink[0] = new Array("", "Advanced_Wireless2g_Content.asp", "Advanced_WGuest2g_Content.asp", "Advanced_WMode2g_Content.asp", "Advanced_ACL2g_Content.asp", "Advanced_WSecurity2g_Content.asp", "Advanced_WAdvanced2g_Content.asp");
@@ -413,7 +414,7 @@ tablink[3] = new Array("", "Advanced_WAN_Content.asp", "Advanced_IPv6_Content.as
 tablink[4] = new Array("", "Advanced_BasicFirewall_Content.asp", "Advanced_Netfilter_Content.asp", "Advanced_URLFilter_Content.asp", "Advanced_MACFilter_Content.asp", "Advanced_Firewall_Content.asp");
 tablink[5] = new Array("", "Advanced_AiDisk_others.asp", "Advanced_AiDisk_samba.asp", "Advanced_AiDisk_ftp.asp", "Advanced_Modem_others.asp", "Advanced_Printer_others.asp");
 tablink[6] = new Array("", "Advanced_System_Content.asp", "Advanced_Services_Content.asp", "Advanced_OperationMode_Content.asp", "Advanced_FirmwareUpgrade_Content.asp", "Advanced_SettingBackup_Content.asp", "Advanced_Console_Content.asp");
-tablink[7] = new Array("", "Advanced_Tweaks_Content.asp", "Advanced_Scripts_Content.asp", "Advanced_InetDetect_Content.asp" ,"Advanced_web.asp");
+tablink[7] = new Array("", "Advanced_Tweaks_Content.asp", "Advanced_Scripts_Content.asp", "Advanced_InetDetect_Content.asp");
 tablink[8] = new Array("", "Main_WStatus2g_Content.asp", "Main_WStatus_Content.asp", "", "", "", "", "", "", "", "");
 tablink[9] = new Array("", "Main_LogStatus_Content.asp", "Main_DHCPStatus_Content.asp", "Main_IPTStatus_Content.asp", "Main_RouteStatus_Content.asp", "Main_CTStatus_Content.asp");
 if (found_app_scutclient()){
@@ -438,7 +439,7 @@ if (found_app_smartdns()){
 }
 
 //Level 2 Menu
-menuL2_title = new Array(21)
+menuL2_title = new Array(15)
 menuL2_title = new Array("", "<#menu5_11#>", "<#menu5_12#>", "<#menu5_2#>", "<#menu5_3#>", "<#menu5_5#>", "<#menu5_4#>", "<#menu5_6#>", "<#menu5_10#>", "<#menu5_9#>", "<#menu5_7#>");
 if (found_app_scutclient()){
 	menuL2_title.push("<#menu5_13#>");
@@ -1343,68 +1344,7 @@ function removeFromLocalStorage(name){
         localStorage.removeItem(name);
     }
 }
-//WEB自定义菜单
-var w_ai = '<% nvram_get_x("", "w_ai"); %>';
-var w_vpn_s = '<% nvram_get_x("", "w_vpn_s"); %>';
-var w_vpn_c = '<% nvram_get_x("", "w_vpn_c"); %>';
-var w_wnet = '<% nvram_get_x("", "w_wnet"); %>';
-var w_sys = '<% nvram_get_x("", "w_sys"); %>';
-var w_usb = '<% nvram_get_x("", "w_usb"); %>';
-var w_net = '<% nvram_get_x("", "w_net"); %>';
-var w_log = '<% nvram_get_x("", "w_log"); %>';
-var w_scu = '<% nvram_get_x("", "w_scu"); %>';
-var w_dnsf = '<% nvram_get_x("", "w_dnsf"); %>';
-var w_ss = '<% nvram_get_x("", "w_ss"); %>';
-var w_men = '<% nvram_get_x("", "w_men"); %>';
 
-if (w_ai==0){
-	menuL1_link[2] = "";
-	menuL1_title[2] = "";
-}
-if (w_vpn_s==0){
-	menuL1_link[3] = "";
-	menuL1_title[3] = "";
-}
-if (w_vpn_c==0){
-	menuL1_link[4] = "";
-	menuL1_title[4] = "";
-}
-if (w_wnet==0){
-	menuL1_link[5] = "";
-	menuL1_title[5] = "";
-}
-if (w_sys==0){
-	menuL1_link[6] = "";
-	menuL1_title[6] = "";
-}
-if (w_usb==0){
-	menuL2_link[6] = "";
-	menuL2_title[6] = "";
-}
-if (w_net==0){
-	menuL2_link[9] = "";
-	menuL2_title[9] = "";
-}
-if (w_log==0){
-	menuL2_link[10] = "";
-	menuL2_title[10] = "";
-}
-if (w_scu==0){
-	menuL2_link[11] = "";
-	menuL2_title[11] = "";
-}
-if (w_dnsf==0){
-	menuL2_link[12] = "";
-	menuL2_title[12] = "";
-}
-if (w_ss==0){
-	menuL2_link[13] = "";
-	menuL2_title[13] = "";
-}
-if (w_men==0){
-	menuL2_link[14] = "";
-	menuL2_title[14] = "";
-}
 (function($){
     var $j = $.noConflict();
     $j.fn.tabSlideOut = function(callerSettings){
