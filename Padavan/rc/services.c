@@ -632,9 +632,9 @@ start_services_once(int is_ap_mode)
 #if defined(APP_VLMCSD)
 	start_vlmcsd();
 #endif
-#if defined(APP_SMARTDNS)
-	start_smartdns();
-#endif
+//#if defined(APP_SMARTDNS)
+//	start_smartdns();
+//#endif
 	start_lltd();
 	start_watchdog_cpu();
 	start_crond();
