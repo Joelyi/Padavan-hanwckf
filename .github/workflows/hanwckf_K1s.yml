@@ -20,10 +20,6 @@ on:
         type: boolean
         description: '是否替换主题文件'
         default: 'false'
-      wifi:
-        type: boolean
-        description: '是否替换wifi文件'
-        default: 'false'
 
 #设置仓库的读写权限
 permissions:
@@ -88,6 +84,7 @@ jobs:
         if: github.event.inputs.padavanbin == 'true'
         run: |
           cp -f Padavan/www/n56u_ribbon_fixed/Advanced_smartdns.asp $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/Advanced_smartdns.asp
+          cp -f Padavan/www/n56u_ribbon_fixed/Advanced_web.asp $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/Advanced_web.asp
           cp -f Padavan/www/n56u_ribbon_fixed/state.js $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/state.js
           cp -f Padavan/www/dict/CN.dict $WORK_PATH/trunk/user/www/dict/CN.dict
           cp -f Padavan/shared/defaults.c $WORK_PATH/trunk/user/shared/defaults.c
@@ -112,17 +109,6 @@ jobs:
           sudo rm -rf $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/images
           cp -rf theme/. $WORK_PATH/trunk/user/www/n56u_ribbon_fixed
           echo "复制主题文件结束"  
-      - name: Recovery wifi files download from remote
-        if: github.event.inputs.wifi == 'true'
-        run: |          
-          sudo rm -rf $WORK_PATH/trunk/proprietary/rt_wifi/rtpci/3.0.X.X/mt76x2
-          sudo rm -rf $WORK_PATH/trunk/proprietary/rt_wifi/rtpci/3.0.X.X/mt76x2_ap
-          sudo rm -rf $WORK_PATH/trunk/proprietary/rt_wifi/rtsoc/2.4.X.X
-          sudo rm -rf $WORK_PATH/trunk/proprietary/rt_wifi/rtsoc/2.7.X.X
-          cp -f K2-wifi/ra_nat.c $WORK_PATH/trunk/proprietary/rt_ppe/hw_nat/ra_nat.c
-          cp -rf K2-wifi/rtpci/. $WORK_PATH/trunk/proprietary/rt_wifi/rtpci/3.0.X.X
-          cp -rf K2-wifi/rtsoc/. $WORK_PATH/trunk/proprietary/rt_wifi/rtsoc
-          echo "复制wifi文件结束" 
 
       - name: Build Firmware
         run: |
