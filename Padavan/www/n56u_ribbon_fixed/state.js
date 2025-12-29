@@ -3,8 +3,6 @@ var wan_route_x = '<% nvram_get_x("", "wan_route_x"); %>';
 var wan_proto = '<% nvram_get_x("", "wan_proto"); %>';
 var lan_proto = '<% nvram_get_x("", "lan_proto_x"); %>';
 var log_float = '<% nvram_get_x("", "log_float_ui"); %>';
-var reboot_schedule_support = '<% nvram_get_x("", "reboot_schedule_enable"); %>';
-var ss_schedule_support = '<% nvram_get_x("", "ss_schedule_enable"); %>';
 var log_stamp = 0;
 var sysinfo = <% json_system_status(); %>;
 var uptimeStr = "<% uptime(); %>";
@@ -388,7 +386,7 @@ tabtitle[3] = new Array("", "<#menu5_3_1#>", "<#menu5_3_3#>", "<#menu5_3_4#>", "
 tabtitle[4] = new Array("", "<#menu5_5_1#>", "<#menu5_5_5#>", "<#menu5_5_2#>", "<#menu5_5_3#>", "<#menu5_5_4#>");
 tabtitle[5] = new Array("", "<#menu5_4_3#>", "<#menu5_4_1#>", "<#menu5_4_2#>", "<#menu5_4_4#>", "<#menu5_4_5#>");
 tabtitle[6] = new Array("", "<#menu5_6_2#>", "<#menu5_6_5#>", "<#menu5_6_1#>", "<#menu5_6_3#>", "<#menu5_6_4#>", "<#menu5_6_6#>");
-tabtitle[7] = new Array("", "<#menu5_10_1#>", "<#menu5_10_2#>", "<#menu5_10_3#>" , "<#menu5_22_1#>");
+tabtitle[7] = new Array("", "<#menu5_10_1#>", "<#menu5_10_2#>", "<#menu5_10_3#>");
 tabtitle[8] = new Array("", "<#menu5_11#>", "<#menu5_12#>", "WAN", "", "", "", "", "", "", "");
 tabtitle[9] = new Array("", "<#menu5_7_2#>", "<#menu5_7_3#>", "<#menu5_7_5#>", "<#menu5_7_6#>", "<#menu5_7_8#>");
 if (found_app_scutclient()){
@@ -403,38 +401,8 @@ if (found_app_shadowsocks()){
 if (found_app_mentohust()){
 	tabtitle[13] = new Array("", "<#menu5_1_1#>","<#menu5_13_log#>");
 }
-if (found_app_adbyby()){
-	tabtitle[14] = new Array("", "<#menu5_20_1#>");
-}
-if (found_app_koolproxy()){
-	if (found_app_adbyby()){
-		tabtitle[14].push("<#menu5_26_1#>");
-	}else{
-	tabtitle[14] = new Array("", "<#menu5_26_1#>");
-	}
-}
 if (found_app_smartdns()){
 	tabtitle[15] = new Array("", "<#menu5_29#>");	
-}else{
-if (found_app_adguardhome()){
-	tabtitle[15] = new Array("", "<#menu5_29#>");
-}
-}
-if (found_app_aliddns()){
-	tabtitle[16] = new Array("", "<#menu5_30#>");
-}else{
-if (found_app_zerotier()){
-	tabtitle[16] = new Array("", "<#menu5_32#>");
-}
-}
-if (found_app_frp()){
-	tabtitle[17] = new Array("", "<#menu5_25_1#>");
-}
-if (found_app_caddy()){
-	tabtitle[18] = new Array("", "<#menu5_27_1#>");
-}
-if (found_app_wyy()){
-	tabtitle[18] = new Array("", "<#menu5_31_1#>");
 }
 //Level 3 Tab title
 
@@ -464,38 +432,9 @@ if (found_app_mentohust()){
 	mentohust_array = new Array("","mentohust.asp","mentohust_log.asp");
 	tablink[13] = (mentohust_array);
 }
-if (found_app_adbyby()){
-	ad_array = new Array("","Advanced_adbyby.asp");
-	tablink[14] = (ad_array);
-}else if (found_app_koolproxy()){
-	kp_array = new Array("","Advanced_koolproxy.asp");
-	tablink[14] = (kp_array);
-}
 if (found_app_smartdns()){
 	smartdns_array = new Array("","Advanced_smartdns.asp");
 	tablink[15] = (smartdns_array);
-}else if (found_app_adguardhome()){
-	adg_array = new Array("","Advanced_adguardhome.asp");
-	tablink[15] = (adg_array);
-}
-if (found_app_aliddns()){
-	aliddns_array = new Array("","Advanced_aliddns.asp");
-	tablink[16] = (aliddns_array);
-}else if (found_app_zerotier()){
-	zerotier_array = new Array("","Advanced_zerotier.asp");
-	tablink[16] = (zerotier_array);
-}
-if (found_app_frp()){
-	frp_array = new Array("","Advanced_frp.asp");
-	tablink[17] = (frp_array);
-}
-if (found_app_caddy()){
-	caddy_array = new Array("","Advanced_caddy.asp");
-	tablink[18] = (caddy_array);
-}
-if (found_app_wyy()){
-	wyy_array = new Array("","Advanced_wyy.asp");
-	tablink[19] = (wyy_array);
 }
 
 //Level 2 Menu
@@ -517,34 +456,8 @@ if (found_app_mentohust()){
 	menuL2_title.push("mentohust");
 } else menuL2_title.push("");
 
-if (found_app_koolproxy()){
-	menuL2_title.push("<#menu5_20#>");
-}else if (found_app_adbyby()){
-	menuL2_title.push("<#menu5_20#>");
-} else menuL2_title.push("");
-
 if (found_app_smartdns()){
 	menuL2_title.push("<#menu5_29#>");
-} else if (found_app_adguardhome()){
-	menuL2_title.push("<#menu5_29#>");
-} else menuL2_title.push("");
-
-if (found_app_aliddns()){
-	menuL2_title.push("<#menu5_30#>");
-} else if (found_app_zerotier()){
-	menuL2_title.push("<#menu5_30#>");
-} else menuL2_title.push("");
-
-if (found_app_frp()){
-	menuL2_title.push("<#menu5_25#>");
-} else menuL2_title.push("");
-
-if (found_app_caddy()){
-	menuL2_title.push("<#menu5_27#>");
-} else menuL2_title.push("");
-
-if (found_app_wyy()){
-	menuL2_title.push("<#menu5_31#>");
 } else menuL2_title.push("");
 
 menuL2_link  = new Array("", tablink[0][1], tablink[1][1], tablink[2][1], tablink[3][1], tablink[4][1], tablink[5][1], tablink[6][1], tablink[7][1], support_2g_radio() ? tablink[8][1] : "Main_EStatus_Content.asp", tablink[9][1]);
@@ -563,34 +476,14 @@ if (found_app_shadowsocks()){
 if (found_app_mentohust()){
 	menuL2_link.push(mentohust_array[1]);
 } else menuL2_link.push("");
-if (found_app_adbyby()){
-	menuL2_link.push(ad_array[1]);
-} else if (found_app_koolproxy()){
-	menuL2_link.push(kp_array[1]);
-} else menuL2_link.push("");
+
 if (found_app_smartdns()){
 	menuL2_link.push(smartdns_array[1]);
-} else if (found_app_adguardhome()){
-	menuL2_link.push(adg_array[1]);
-} else menuL2_link.push("");
-if (found_app_aliddns()){
-	menuL2_link.push(aliddns_array[1]);
-} else if (found_app_zerotier()){
-	menuL2_link.push(zerotier_array[1]);
-} else menuL2_link.push("");
-if (found_app_frp()){
-	menuL2_link.push(frp_array[1]);
-} else menuL2_link.push("");
-if (found_app_caddy()){
-	menuL2_link.push(caddy_array[1]);
-} else menuL2_link.push("");
-if (found_app_wyy()){
-	menuL2_link.push(wyy_array[1]);
 } else menuL2_link.push("");
 
 //Level 1 Menu in Gateway, Router mode
-menuL1_title = new Array("", "<#menu1#>", "", "<#menu2#>", "<#menu6#>", "<#menu4#>", "<#menu5_8#>", "<#menu5#>");
-menuL1_link = new Array("", "index.asp", "", "vpnsrv.asp", "vpncli.asp", "Main_TrafficMonitor_realtime.asp", "Advanced_System_Info.asp", "as.asp");
+menuL1_title = new Array("", "<#menu1#>", "", "", "", "<#menu4#>", "<#menu5_8#>", "<#menu5#>");
+menuL1_link = new Array("", "index.asp", "", "", "", "Main_TrafficMonitor_realtime.asp", "Advanced_System_Info.asp", "as.asp");
 menuL1_icon = new Array("", "icon-home", "icon-hdd", "icon-retweet", "icon-globe", "icon-tasks", "icon-random", "icon-wrench");
 
 function show_menu(L1, L2, L3){
@@ -617,10 +510,6 @@ function show_menu(L1, L2, L3){
 		menuL2_title[4] = "";
 		menuL2_link[5] = "";  //remove Firewall
 		menuL2_title[5] = "";
-		menuL1_link[3] = "";  //remove VPN svr
-		menuL1_title[3] = "";
-		menuL1_link[4] = "";  //remove VPN cli
-		menuL1_title[4] = "";
 		
 		if (lan_proto == '1'){
 			tabtitle[2].splice(2,1);
@@ -1467,7 +1356,6 @@ var w_scu = '<% nvram_get_x("", "w_scu"); %>';
 var w_dnsf = '<% nvram_get_x("", "w_dnsf"); %>';
 var w_ss = '<% nvram_get_x("", "w_ss"); %>';
 var w_men = '<% nvram_get_x("", "w_men"); %>';
-var w_adbyby = '<% nvram_get_x("", "w_adbyby"); %>';
 
 if (w_ai==0){
 	menuL1_link[2] = "";
@@ -1516,10 +1404,6 @@ if (w_ss==0){
 if (w_men==0){
 	menuL2_link[14] = "";
 	menuL2_title[14] = "";
-}
-if (w_adbyby==0){
-	menuL2_link[15] = "";
-	menuL2_title[15] = "";
 }
 (function($){
     var $j = $.noConflict();
