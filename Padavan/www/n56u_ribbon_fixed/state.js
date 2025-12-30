@@ -402,7 +402,7 @@ if (found_app_mentohust()){
 	tabtitle[13] = new Array("", "<#menu5_1_1#>","<#menu5_13_log#>");
 }
 if (found_app_smartdns()){
-	tabtitle[15] = new Array("", "<#menu5_29#>");	
+	tabtitle[14] = new Array("", "<#menu5_29#>");	
 }
 
 //Level 3 Tab title
@@ -435,7 +435,7 @@ if (found_app_mentohust()){
 }
 if (found_app_smartdns()){
 	smartdns_array = new Array("","Advanced_smartdns.asp");
-	tablink[15] = (smartdns_array);
+	tablink[14] = (smartdns_array);
 }
 
 //Level 2 Menu
