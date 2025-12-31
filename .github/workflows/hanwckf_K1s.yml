@@ -82,12 +82,14 @@ jobs:
       - name: Recovery asp files download from remote
         if: github.event.inputs.padavanbin == 'true'
         run: |
-          cp -f Padavan/www/n56u_ribbon_fixed/Advanced_smartdns.asp $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/Advanced_smartdns.asp
-          cp -f Padavan/www/n56u_ribbon_fixed/state.js $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/state.js
+          #cp -f Padavan/www/n56u_ribbon_fixed/Advanced_smartdns.asp $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/Advanced_smartdns.asp
+          #cp -f Padavan/www/n56u_ribbon_fixed/state.js $WORK_PATH/trunk/user/www/n56u_ribbon_fixed/state.js
           cp -f Padavan/www/dict/CN.dict $WORK_PATH/trunk/user/www/dict/CN.dict
           cp -f Padavan/shared/defaults.c $WORK_PATH/trunk/user/shared/defaults.c
           cp -f Padavan/shared/cflags.mk $WORK_PATH/trunk/user/shared/cflags.mk
           cp -f Padavan/shared/notify_rc.h $WORK_PATH/trunk/user/shared/notify_rc.h
+          sudo rm -rf $WORK_PATH/trunk/user/www/n56u_ribbon_fixed
+          cp -rf Padavan/n56u_ribbon_fixed $WORK_PATH/trunk/user/www
           echo "复制Padavan文件结束"  
       - name: Recovery bin files download from remote
         if: github.event.inputs.config == 'true'
