@@ -57,11 +57,6 @@ jobs:
           mkdir -p toolchain-3.4.x
           tar -xvf mipsel-linux-uclibc.tar.xz -C toolchain-3.4.x
           mkdir -p /opt/images/
-
-      - name: newly build boards
-        run: |
-          cd $WORK_PATH/trunk/configs/boards
-          mkdir $TNAME
         
       - name: Recovery Padavan files download from remote
         if: github.event.inputs.padavanbin == 'true'
@@ -94,7 +89,6 @@ jobs:
         if: github.event.inputs.config == 'true'
         run: |
           cp -f $TNAME/$TNAME.config $WORK_PATH/trunk/configs/templates/$TNAME.config
-          cp -f $TNAME/kernel-3.4.x.config $WORK_PATH/trunk/configs/boards/$TNAME/kernel-3.4.x.config
           #cd $WORK_PATH/trunk/tools
           #sed -i "s#1.15.2#1.21.1#g" ./Makefile
           #sed -i "s#https://gomirrors.org/dl/go#https://dl.google.com/go#g" ./Makefile
